@@ -1,5 +1,28 @@
 # ProbabilityDistributionViewer
 
+## 手っ取り早く動かす手順
+
+以下のコマンドでリポジトリをローカルにcloneする．
+```
+git clone https://github.com/Kkun84/ProbabilityDistributionViewer.git
+```
+以下のコマンドでDockerイメージをbuildする．
+```
+./docker/build.sh
+```
+以下のコマンドでコンテナを起動する．
+```
+./docker/run.sh
+```
+サーバーにアクセスするために，ブラウザで以下にアクセス．
+```
+http://localhost:8501/
+```
+以下のコマンドでコンテナを停止する．
+```
+./docker/stop.sh
+```
+
 ## Dockerの利用
 
 Dockerに関するシェルスクリプトが`docker/`フォルダにまとめられています．
@@ -11,6 +34,7 @@ Dockerに関するシェルスクリプトが`docker/`フォルダにまとめ�
 | `./docker/run.sh` | Dockerイメージ`ProbabilityDistributionViewer`のコンテナを作ります． コンテナの名前は`patch_sets`です．このシェルスクリプトを実行したディレクトリとパス`$DATASET`が示すディレクトリがそれぞれコンテナ内の`/workspace/`と`/dataset/`に**マウントされ，完全に同期されます**．また，5000,6006,8888のポートをホストに割り当てます．環境変数は`.env`ファイルから読み込みます． | コンテナで常時実行するコマンド (fish) |
 | `./docker/attach.sh`| `run`で実行したコマンドに復帰します．このコマンドが終了するとコンテナも終了します． |
 | `./docker/exec.sh` | 動作中のコンテナで新しいコマンドを実行します． | 実行するコマンド (fish) |
+| `./docker/stop.sh` | 動作中のコンテナを停止します． |  |
 | `./docker/jupyter.sh` | コンテナ内でjupyter-labを実行します．**非常にセキュアでない**ので実行には注意して下さい． | サーバーのポート (8888) |
 
 `.env`の作成には`.env.default`を参考にして下さい．
